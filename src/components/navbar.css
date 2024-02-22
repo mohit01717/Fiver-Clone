@@ -1,0 +1,17 @@
+.nav_container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 10vh;
+    margin: 0px 2vw;
+}
+.nav_container div img{
+    width: 200px;
+}
+.nav_items_container{
+    display: flex;
+    list-style: none;
+    width:40%;
+    justify-content: space-evenly;
+    
+}
