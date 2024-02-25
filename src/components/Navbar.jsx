@@ -17,7 +17,7 @@ const Navbar = () => {
 
   const currentUser = {
     id: 1,
-    username: "John Doe",
+    username: "Mohit Gagneja",
     isSeller: true,
   };
   console.log(show);
@@ -43,7 +43,8 @@ const Navbar = () => {
           <span>Explore</span>
           <span>English</span>
           {!currentUser?.isSeller && <span>Become a Seller</span>}
-          <span>Sign in</span>
+          <Link to={'/login'}>Sign in</Link>
+          <Link to={'/register'}>Register</Link>
           {!currentUser && (
             <button className=" py-2 px-5 border rounded-md  hover:bg-green-900">
               Join

@@ -48,11 +48,21 @@ function App() {
         },
         {
           path: "/messages",
-          element: <Login name={"Login"}/>,
+          element: <Home />,
         },
         {
           path: "/messages/:id",
-          element: <Login name={"Login"}/>,
+          element: <Home />,
+        },
+        {
+          path:"/login",
+          element:<Login name={"Login"}/>
+
+        },
+        {
+          path:"/register",
+          element:<Login name={"Register"}/>
+
         },
       ],
       Outlet,

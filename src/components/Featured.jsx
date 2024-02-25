@@ -46,9 +46,9 @@ const arr= ["red","green","blue",";lightyellow"]
             <button className=" border px-2 py-1 rounded-full font-bold hover:bg-slate-100 hover:text-black">AI service</button>
           </div>
         </div>
-        <div className="right w-[50%] mx-20  ">
+        <div className="right w-[100vw] mx-20  ">
           <img
-            className="h-[50vh] "
+            className="h-[100%]  w-[100%]"
             src="src\assets\one.png"
             alt="not"
           />
