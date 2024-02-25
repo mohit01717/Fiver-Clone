@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 import "./login.css";
 import axios from "axios";
+import newRequest from "../../utils/newRequest"
 
 const Button = ({ name, onclick }) => {
   return (
@@ -29,11 +30,8 @@ const Login = ({ name }) => {
   const handleSubmit = async (e)=>{
       e.preventDefault()
       try{
-        const res = await axios.post("http://localhost:8800/api/auth/login", {
-          username, 
-          password,
-        },
-        {withCredentials : true})
+        // await newRequest.post("/auth/login", {username, password})
+        const res = await newRequest.post("/auth/login", {username, password})
         console.log(res.data)
       }catch(err){
         console.log(err)
