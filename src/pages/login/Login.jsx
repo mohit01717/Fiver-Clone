@@ -5,6 +5,7 @@ import Stop_circle from "remixicon-react/StopCircleLineIcon";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 import "./login.css";
+import axios from "axios";
 
 const Button = ({ name, onclick }) => {
   return (
@@ -16,11 +17,28 @@ const Button = ({ name, onclick }) => {
 const Login = ({ name }) => {
   const [eye, seteye] = useState(false);
   const [stop, setstop] = useState(false);
+  const [username, setUsername] = useState("")
+  const [password, setPassword] = useState("")
+
+
   const {
     register,
     formState: { errors },
-    handleSubmit,
   } = useForm();
+
+  const handleSubmit = async (e)=>{
+      e.preventDefault()
+      try{
+        const res = await axios.post("http://localhost:8800/api/auth/login", {
+          username, 
+          password,
+        },
+        {withCredentials : true})
+        console.log(res.data)
+      }catch(err){
+        console.log(err)
+      }
+  }
 
   return (
     <div className="Login-outer-container">
@@ -34,18 +52,17 @@ const Login = ({ name }) => {
       <div className="login_container">
         <h1>{name}</h1>
         <form
-          onSubmit={handleSubmit((data) => {
-            console.log(data);
-          })}
+          onSubmit={handleSubmit}
         >
           <div className="login_inside_container">
             <div className="login_input_border">
               <input
-                {...register("email", { required: "Email is required" })}
-                type={"email"}
-                name={"email"}
-                placeholder={"Email"}
+                {...register("Username", { required: "Username is required" })}
+                type={"text"}
+                name={"username"}
+                placeholder={"Username"}
                 className="Input_user"
+                onChange={e=>setUsername(e.target.value)}
               />
               {stop ? (
                 <Stop_circle color="red" />
@@ -68,6 +85,7 @@ const Login = ({ name }) => {
                 name={"password"}
                 placeholder={"Password"}
                 className="Input_user"
+                onChange={e=>setPassword(e.target.value)}
               />
               {eye ? (
                 <EyeOn
