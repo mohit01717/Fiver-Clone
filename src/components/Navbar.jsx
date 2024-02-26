@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import newRequest from "../utils/newRequest";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [active, setactive] = useState(false);
@@ -15,11 +17,25 @@ const Navbar = () => {
     };
   }, []);
 
-  const currentUser = {
-    id: 1,
-    username: "Mohit Gagneja",
-    isSeller: true,
-  };
+  // const currentUser = {
+  //   id: 1,
+  //   username: "Mohit Gagneja",
+  //   isSeller: true,
+  // };
+
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"))
+
+  const navigate = useNavigate()
+  const handleLogout = async ()=>{
+    try{
+      await newRequest.post("/auth/logout")
+      localStorage.setItem("currentUser", null)
+      navigate("/")
+    }catch(err){
+      console.log(err)
+    }
+  }
+
   console.log(show);
   return (
     <div
@@ -56,7 +72,8 @@ const Navbar = () => {
               onClick={() => setshow(!show)}
             >
               <img
-                src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg"
+                // src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg"
+                src = {currentUser.img || "../src/assets/noavatar.jpg"}
                 alt=""
                 className=" h-8 w-8 object-contain"
               />
@@ -72,7 +89,7 @@ const Navbar = () => {
                   <Link className=" text-gray-400 hover:text-gray-600  font-semibold" to={'/orders'}>Orders</Link>
                   <Link className=" text-gray-400  hover:text-gray-600 font-semibold" to={'/messages'}>Messages</Link>
                   <Link className=" text-gray-400 hover:text-gray-600 font-semibold" to={'/orders'}>Orders</Link>
-                  <Link className=" text-gray-400 hover:text-gray-600  font-semibold" to={'/'}>Logout</Link>
+                  <Link className=" text-gray-400 hover:text-gray-600  font-semibold" onClick={handleLogout}>Logout</Link>
                 </div>
               )}
             </div>
