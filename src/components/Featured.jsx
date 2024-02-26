@@ -5,7 +5,6 @@ const Featured = () => {
 const arr= ["red","green","blue",";lightyellow"]
   function randomNumber() {
     const index = Math.floor(Math.random() *4);
-    console.log(index)
     setbg(arr[index])
   }
   useEffect(() => {

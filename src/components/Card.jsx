@@ -6,13 +6,13 @@ const Card = ({ desc, title, img }) => {
       <div className=" flex flex-col relative place-items-center">
         <div className="w-[230px]">
           <img
-            className=" rounded-md  z-0"
+            className=" rounded-md  "
             style={{ height: "100%", width: "100%" }}
             src={img}
             alt=""
           />
         </div>
-        <div className="text absolute top-2 text-white">
+        <div className="text absolute top-2  left-10 text-white">
           <p className=" text-lg font-semibold">{desc}</p>
           <h1 className=" text-xl font-bold mx-1">{title}</h1>
         </div>

@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.carousel-prev,
+.carousel-next {
+  background-color: rgb(205, 199, 199);
+  height: 50px;
+  width: 50px;
+  position:absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}

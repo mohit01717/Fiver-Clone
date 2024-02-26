@@ -3,16 +3,17 @@ import React from "react";
 
 const Slide = ({ rows, children, slidesToShow, arrowsScroll }) => {
   return (
-    <>
-      <Slider
-        rows={rows}
-        slidesToShow={slidesToShow}
-        arrowsScroll={arrowsScroll}
-        
-      >
-        {children}
-      </Slider>
-    </>
+    <div className="flex justify-center   place-items-center  my-10 px-0 py-6 ">
+      <div className=" w-[1400px] "  >
+        <Slider
+          rows={rows}
+          slidesToShow={slidesToShow}
+          arrowsScroll={arrowsScroll}
+        >
+          {children}
+        </Slider>
+      </div>
+    </div>
   );
 };
 
