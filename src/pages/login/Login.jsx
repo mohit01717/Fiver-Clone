@@ -5,8 +5,9 @@ import Stop_circle from "remixicon-react/StopCircleLineIcon";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 import "./login.css";
-import axios from "axios";
+// import axios from "axios";
 import newRequest from "../../utils/newRequest"
+import { useNavigate } from "react-router-dom";
 
 const Button = ({ name, onclick }) => {
   return (
@@ -20,7 +21,9 @@ const Login = ({ name }) => {
   const [stop, setstop] = useState(false);
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
+  const [error, setError] = useState(null)
 
+  const navigate = useNavigate()
 
   const {
     register,
@@ -32,9 +35,12 @@ const Login = ({ name }) => {
       try{
         // await newRequest.post("/auth/login", {username, password})
         const res = await newRequest.post("/auth/login", {username, password})
-        console.log(res.data)
+        // console.log(res.data)
+        localStorage.setItem("currentUser", JSON.stringify(res.data))
+        navigate("/")
       }catch(err){
-        console.log(err)
+        setError(err.response.data)
+        // console.log(err.response.data)
       }
   }
 
@@ -107,6 +113,7 @@ const Login = ({ name }) => {
               )}
             />
             <Button name={name} />
+            {error && error}
           </div>
         </form>
       </div>
