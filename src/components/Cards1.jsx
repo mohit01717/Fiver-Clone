@@ -10,12 +10,12 @@ const Cards1 = ({ title, image }) => {
     >
       <img className="w-12" src={image} alt="" />
       <div
-        className={`border-t-2 border-gray-500 px-4
+        className={`border-t-2 border-gray-500 
       
      hover ${line ? "border-green-500" : "border-gray-500"}
      hover ${line ? "transition-transform " : "none"}  
+     hover ${line ? " px-11 " : "px-4"}
      hover ${line ? "scale-x-125 " : "none"} 
-     hover ${line ? " px-11 " : "px-4"} 
     
      }`}
       ></div>

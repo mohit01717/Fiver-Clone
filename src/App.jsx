@@ -7,6 +7,7 @@ import Home from "./pages/home/Home";
 import Footer from "./components/Footer";
 import Gig from "./pages/gigs/Gig";
 import Featured from "./components/Featured";
+import Register from "./register/Register";
 function App() {
   const Layout = () => {
     return (
@@ -61,7 +62,7 @@ function App() {
         },
         {
           path:"/register",
-          element:<Login name={"Register"}/>
+          element:<Register name={"Register"}/>
 
         },
       ],

@@ -1,26 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 const Featured = () => {
-  const [bg, setbg] = useState("red");
-const arr= ["red","green","blue",";lightyellow"]
-  function randomNumber() {
-    const index = Math.floor(Math.random() *4);
-    setbg(arr[index])
-  }
-  useEffect(() => {
-    const interval_id = setInterval(() => {
-      randomNumber();
-    }, 1000);
-
-    return () => {
-      clearInterval(interval_id);
-    };
-  }, []);
 
   return (
     <div
       className=" flex justify-around place-items-center h-[70vh] w-[100%]  text-black "
-      style={{ backgroundColor: bg }}
+      style={{ backgroundColor: 'green' }}
     >
       
         <div className=" flex    flex-col  place-items-center mx-8 ">

@@ -114,7 +114,7 @@ const Navbar = () => {
           <hr className=" w-screen h-0 border border-gray-300 " />
           <div className=" w-[1400px] py-3 flex justify-between text-gray-500 font-light   ">
             <Link
-              className=" text-gray-400 font-serif hover:text-[17px] hover:text-gray-500 transition-transform "
+              className=" text-gray-400 font-serif hover:text-[20px] hover:text-gray-500 transition-transform "
               to="/"
             >
               Graphics & Design

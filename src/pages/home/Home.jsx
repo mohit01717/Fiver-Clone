@@ -8,6 +8,7 @@ import Star from "remixicon-react/StarSFillIcon";
 import Slide from "../../components/Slide";
 import Cards1 from "../../components/Cards1";
 import { cards1 } from "../../../data1";
+import Cards2 from "../../components/Cards2";
 const Home = () => {
   return (
     <div>
@@ -18,20 +19,13 @@ const Home = () => {
         Popular Services
       </h1>
 
-      
-        <Slide rows={1} slidesToShow={5} arrowsScroll={5}>
-          {cards.map((e, id) => {
-            return (
-              <Card
-                key={id}
-                title={e.title}
-                desc={e.description}
-                img={e.image}
-              />
-            );
-          })}
-        </Slide>
-      
+      <Slide slidesToShow={4} arrowsScroll={3}>
+        {cards.map((e, id) => {
+          return (
+            <Card key={id} title={e.title} desc={e.description} img={e.image} />
+          );
+        })}
+      </Slide>
 
       {/* Features 1 */}
 
@@ -168,6 +162,24 @@ const Home = () => {
           />
         </div>
       </div>
+
+      {/* Products */}
+
+<div className=" bg-slate-100">
+      <Slide  slidesToShow={4} arrowsScroll={3}>
+
+      <Cards2/>
+      <Cards2/>
+      <Cards2/>
+      <Cards2/>
+      <Cards2/>
+      <Cards2/>
+      <Cards2/>
+      <Cards2/>
+      <Cards2/>
+      <Cards2/>
+      </Slide>
+</div>
     </div>
   );
 };
