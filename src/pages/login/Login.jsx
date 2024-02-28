@@ -5,6 +5,9 @@ import Stop_circle from "remixicon-react/StopCircleLineIcon";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 import "./login.css";
+// import axios from "axios";
+import newRequest from "../../utils/newRequest"
+import { useNavigate } from "react-router-dom";
 
 const Button = ({ name, onclick }) => {
   return (
@@ -16,11 +19,30 @@ const Button = ({ name, onclick }) => {
 const Login = ({ name }) => {
   const [eye, seteye] = useState(false);
   const [stop, setstop] = useState(false);
+  const [username, setUsername] = useState("")
+  const [password, setPassword] = useState("")
+  const [error, setError] = useState(null)
+
+  const navigate = useNavigate()
+
   const {
     register,
     formState: { errors },
-    handleSubmit,
   } = useForm();
+
+  const handleSubmit = async (e)=>{
+      e.preventDefault()
+      try{
+        // await newRequest.post("/auth/login", {username, password})
+        const res = await newRequest.post("/auth/login", {username, password})
+        // console.log(res.data)
+        localStorage.setItem("currentUser", JSON.stringify(res.data))
+        navigate("/")
+      }catch(err){
+        setError(err.response.data)
+        // console.log(err.response.data)
+      }
+  }
 
   return (
     <div className="Login-outer-container">
@@ -34,18 +56,17 @@ const Login = ({ name }) => {
       <div className="login_container">
         <h1>{name}</h1>
         <form
-          onSubmit={handleSubmit((data) => {
-            console.log(data);
-          })}
+          onSubmit={handleSubmit}
         >
           <div className="login_inside_container">
             <div className="login_input_border">
               <input
-                {...register("email", { required: "Email is required" })}
-                type={"email"}
-                name={"email"}
-                placeholder={"Email"}
+                {...register("Username", { required: "Username is required" })}
+                type={"text"}
+                name={"username"}
+                placeholder={"Username"}
                 className="Input_user"
+                onChange={e=>setUsername(e.target.value)}
               />
               {stop ? (
                 <Stop_circle color="red" />
@@ -68,6 +89,7 @@ const Login = ({ name }) => {
                 name={"password"}
                 placeholder={"Password"}
                 className="Input_user"
+                onChange={e=>setPassword(e.target.value)}
               />
               {eye ? (
                 <EyeOn
@@ -91,6 +113,7 @@ const Login = ({ name }) => {
               )}
             />
             <Button name={name} />
+            {error && error}
           </div>
         </form>
       </div>
